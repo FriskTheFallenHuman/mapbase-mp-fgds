@@ -239,7 +239,7 @@
 	output OnLastBallGrabbed(void) : "Fired when the last combine ball is grabbed from the field by a mega physcannon"
 ]
 
-@PointClass base(CombineBallSpawners, Parentname) = point_combine_ball_launcher :
+@PointClass base(CombineBallSpawners, Parentname) iconsprite("vizzys-icons/point_combine_ball_launcher") = point_combine_ball_launcher :
 	"Launches Combine balls."
 [
 	launchconenoise(float) : "Noise to launch direction" : "0.0" : "Noise in degrees added to the launch direction."
@@ -541,7 +541,7 @@
 ]
 
 
-@PointClass base(Targetname, Parentname, EnableDisable) iconsprite("editor/info_target.vmt") sphere(radius) = info_radar_target : "Jalopy Radar Beacon"
+@PointClass base(Targetname, Parentname, EnableDisable) iconsprite("vizzys-icons/info_radar_target") sphere(radius) = info_radar_target : "Jalopy Radar Beacon"
 [
 	radius(float) : "Effective Radius" : 6000 : "How close the Jalopy must be to detect this beacon. If this radius is -1, the range is infinite"
 
@@ -563,11 +563,11 @@
 ]
 
 
-@PointClass base(Targetname, Angles, EnableDisable) iconsprite("editor/info_target.vmt") = info_target_vehicle_transition : "Vehicle Transition Point"
+@PointClass base(Targetname, Angles, EnableDisable) iconsprite("vizzys-icons/info_target_vehicle_transition") = info_target_vehicle_transition : "Vehicle Transition Point"
 [
 ]
 
-@PointClass base(Targetname, Parentname) iconsprite("editor/info_target.vmt")  = info_snipertarget : "Sniper Target"
+@PointClass base(Targetname, Parentname) iconsprite("vizzys-icons/info_snipertarget") = info_snipertarget : "Sniper Target"
 [
 	speed(integer) : "Sweep to speed" : 2
 	groupname(string) : "Group Name"
@@ -811,7 +811,7 @@
 ]
 
 
-@NPCClass base(Parentname, BaseNPC) size(-16 -16 -16, 16 16 16) color(255 150 0) sphere(MinSearchDist) sphere(MaxSearchDist) = npc_enemyfinder : "EnemyFinder"
+@NPCClass base(Parentname, BaseNPC) iconsprite("vizzys-icons/npc_enemyfinder") sphere(MinSearchDist) sphere(MaxSearchDist) = npc_enemyfinder : "EnemyFinder"
 [
 	spawnflags(flags) =
 	[
@@ -874,7 +874,7 @@
 	output OnAcquireEnemies(void) : "Fires when the enemy finder acquires enemies."
 ]
 
-@NPCClass base(Parentname, BaseNPC) size(-16 -16 -16, 16 16 16) color(255 150 0) = npc_enemyfinder_combinecannon : "EnemyFinder Specifically for use with func_tank_combine_cannon"
+@NPCClass base(Parentname, BaseNPC) iconsprite("vizzys-icons/npc_enemyfinder_combinecannon") = npc_enemyfinder_combinecannon : "EnemyFinder Specifically for use with func_tank_combine_cannon"
 [
 	spawnflags(flags) =
 	[
@@ -1076,7 +1076,7 @@
 	output OnEndTouchAll(void) : "Fires when a player or a member of the player's squad stops touching this trigger, and no other members are touching it."
 ]
 
-@NPCClass base(BaseNPC) studio("models/Barney.mdl") = npc_fisherman : "Fisherman"
+@NPCClass base(BaseNPC) studio("models/lostcoast/fisherman/fisherman.mdl") = npc_fisherman : "Fisherman"
 [
 	ExpressionOverride(string) : "Facial expression override"
 	input SetExpressionOverride(string) : "Set facial expression override"
@@ -1293,7 +1293,7 @@
 ]
 
 
-@PointClass base(npc_template_maker) iconsprite("editor/npc_maker.vmt") = npc_hunter_maker : 
+@PointClass base(npc_template_maker) iconsprite("vizzys-icons/npc_hunter_maker") = npc_hunter_maker : 
 	"An entity that creates hunters. The NPCs it creates are clones of a template NPC."
 [
 ]
@@ -1333,12 +1333,12 @@
 ]
 
 
-@PointClass base(Targetname, Parentname, EnableDisable) = env_sporeexplosion : "Bugbait Spore Effect"
+@PointClass base(Targetname, Parentname, EnableDisable) iconsprite("editor-ficool2/env_sporeexplosion") = env_sporeexplosion : "Bugbait Spore Effect"
 [
 	spawnrate(float) : "Spawn Rate (as percentage)" : "25" : "How dense the spore effect is"
 ]
 
-@PointClass base(Targetname, Parentname, Targetname, EnableDisable) = env_gunfire : "Gunfire Effect"
+@PointClass base(Targetname, Parentname, Targetname, EnableDisable) iconsprite("editor-ficool2/env_gunfire") = env_gunfire : "Gunfire Effect"
 [
 	target(target_destination) : "Target" : "" : "Shoot at this target. REMEMBER - this is an effect only! It does not do damage!"
 
@@ -1649,14 +1649,16 @@
 	]
 ]
 
-@PointClass base(Targetname, Parentname) iconsprite("editor/info_target.vmt")  = info_target_helicopter_crash : "Helicopter Crash Target"
+@PointClass base(Targetname, Parentname) iconsprite("vizzys-icons/info_target_helicopter_crash") = info_target_helicopter_crash : "Helicopter Crash Target"
 [
 ]
 
-@PointClass base(Targetname, Parentname) iconsprite("editor/info_target.vmt")  = info_target_gunshipcrash : "Gunship Crash Target"
+@PointClass base(Targetname, Parentname) iconsprite("vizzys-icons/info_target_gunshipcrash") = info_target_gunshipcrash : "Gunship Crash Target"
 [
 	input Enable(void) : "Enable the crash target."
 	input Disable(void) : "Disable the crash target."
+	// Output added by vizzy, suggested by xblah
+	output OnCrashed(void) : "Fires when the gunship crashes."
 ]
 
 @NPCClass base(BaseHelicopter) studio("models/combine_dropship.mdl" ) = npc_combinedropship : "Combine Dropship"
@@ -1833,7 +1835,7 @@
 ]
 
 
-@PointClass base(Targetname, Parentname) iconsprite("editor/env_firesource") color(255 255 0) sphere(radius) = npc_heli_avoidsphere : "Helicopter avoidance sphere"
+@PointClass base(Targetname, Parentname) iconsprite("vizzys-icons/npc_heli_avoidsphere") color(255 255 0) sphere(radius) = npc_heli_avoidsphere : "Helicopter avoidance sphere"
 [
 	spawnflags(Flags) = 
 	[
@@ -2195,7 +2197,7 @@
 	output OnPlayerUse(void) : "Fires when a player +USEs Alyx"
 ]
 
-@PointClass base(Targetname, EnableDisable) = ai_goal_operator : "Indicates items in the world that some NPCs may operate upon"
+@PointClass base(Targetname, EnableDisable) iconsprite("vizzys-icons/ai_goal_operator") = ai_goal_operator : "Indicates items in the world that some NPCs may operate upon"
 [
 	actor(target_name_or_class) : "Actor to affect" : "" : "NPC that should perform this operation"
 
@@ -2227,7 +2229,7 @@
 	output OnFinished(void) : "The item is done"
 ]
 
-@PointClass base(Targetname, EnableDisable) sphere(LightRadius) = info_darknessmode_lightsource
+@PointClass base(Targetname, EnableDisable) sphere(LightRadius) iconsprite("vizzys-icons/info_darknessmode_lightsource") = info_darknessmode_lightsource
 [
 	LightRadius(float) : "Light Radius" : "256.0" : "The radius around this lightsource in which Alyx will be able to see enemies."
 ]
@@ -2371,7 +2373,7 @@
 	]
 ]
 
-@PointClass base(Angles, BaseNPCMaker) size(-8 -8 -8, 8 8 8) color(0 0 255) = npc_antlion_template_maker : "Antlion Template Maker"
+@PointClass base(Angles, BaseNPCMaker) iconsprite("vizzys-icons/npc_antlion_template_maker") = npc_antlion_template_maker : "Antlion Template Maker"
 [
 	spawnflags(Flags) = 
 	[
@@ -2424,7 +2426,7 @@
 	]
 ]
 
-@PointClass base(Targetname) sphere(repelradius) color(0 0 255) = point_antlion_repellant : "Antlion Repellant"
+@PointClass base(Targetname) sphere(repelradius) color(0 0 255) iconsprite("vizzys-icons/point_antlion_repellant") = point_antlion_repellant : "Antlion Repellant"
 [
 	repelradius(float): "Repell radius" : 512 : "Antlions aren't allowed to be inside this radius"
 	input Enable(void) : "Enable"
@@ -2556,7 +2558,7 @@
 	output OnEndSentence(void) : "Fires when the sentence ends"
 ]
 
-@PointClass base(Targetname, Parentname) iconsprite("editor/info_target.vmt")  = scripted_target : "Scripted Target"
+@PointClass base(Targetname, Parentname) iconsprite("vizzys-icons/scripted_target") = scripted_target : "Scripted Target"
 [
 	StartDisabled(choices) : "Start Disabled" : 1 =
 	[
@@ -2736,7 +2738,7 @@
 	input RevertToDefaultRelationship(void) : "Revert relationship changes to the default relationship, which may have changed since this ai_relationship was applied. This returns control of the entity relationship to the code."
 ]
 
-@PointClass base(Targetname) = ai_ally_manager : "AI Ally Manager"
+@PointClass base(Targetname) iconsprite("editor-ficool2/ai_ally_manager")  = ai_ally_manager : "AI Ally Manager"
 [
 	maxallies(integer) : "Maximum number of allies" : 5
 	maxmedics(integer) : "Maximum number of medics" : 1
@@ -2925,7 +2927,7 @@
 [
 ]
 
-@PointClass base(FollowGoal) iconsprite("editor/ai_goal_follow.vmt") = ai_goal_injured_follow : "AI Goal Injured Follow"
+@PointClass base(FollowGoal) iconsprite("editor-ficool2/ai_goal_injured_follow") = ai_goal_injured_follow : "AI Goal Injured Follow"
 [
 ]
 
@@ -3140,7 +3142,7 @@
 	output OnAssaultClear(void) : "Fires when this assault point is cleared of enemies"
 ]
 
-@PointClass base(Targetname) = ai_goal_assault : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/ai_goal_assault") = ai_goal_assault : 
 	"AI Goal Assault"
 [
 	actor(target_name_or_class) : "Actor(s) to affect" : "" : "NPC's that should perform this assault"
@@ -3220,7 +3222,7 @@
 	output OnNPCLeft(ehandle) : "Fired when an NPC target by this goal finishes a forced Leave."
 ]
 
-@PointClass base(BaseActBusy) = ai_goal_actbusy : "AI Goal Act Busy"
+@PointClass base(BaseActBusy) iconsprite("vizzys-icons/ai_goal_actbusy") = ai_goal_actbusy : "AI Goal Act Busy"
 [
 	seeentity(target_name_or_class) : "Sight Entity" : "" : "The Sight Entity (if you provide one) is an entity that will leave the current ActBusy if the Actor playing the ActBusy loses sight of it for the amount of time specified in 'Sight Entity Timeout'. THIS MAY ONLY BE A TARGET NAME. NO CLASSNAMES."
 
@@ -3253,7 +3255,7 @@
 	output OnNPCSeeEnemy(void)  : "Fired when this NPC leaves his actbusy because of sighting an enemy."
 ]
 
-@PointClass base(BaseActBusy) = ai_goal_actbusy_queue : "AI Goal Act Busy Queue"
+@PointClass base(BaseActBusy) iconsprite("editor-ficool2/ai_goal_actbusy_queue") = ai_goal_actbusy_queue : "AI Goal Act Busy Queue"
 [
 	node_exit(target_destination) : "Exit Node" : "" : "The name of the node the first NPC in the queue should move to when he leaves the head of the queue."
 	node01(target_destination) : "Node 1" : "" : "The name of the first actbusy hint node in the queue."
@@ -3322,7 +3324,7 @@
 	output OnArrivedAtNode(void) : "Fires when we arrive at a fear withdrawal node. The node is the activator and the NPC is the caller."
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = ai_changetarget : "Change Target"
+@PointClass base(Targetname) iconsprite("editor-ficool2/ai_changetarget") = ai_changetarget : "Change Target"
 [
 	target(target_destination) : "Target entity" : : "Name of entity whose target will be changed."
 	m_iszNewTarget(target_destination) : "New Target"
@@ -3332,13 +3334,13 @@
 	input Activate( void ) : "Changes the entities target"
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = ai_npc_eventresponsesystem : "An entity that allows you to generate events for nearby friendly NPCs to respond to."
+@PointClass base(Targetname) iconsprite("editor-ficool2/ai_npc_eventresponsesystem") = ai_npc_eventresponsesystem : "An entity that allows you to generate events for nearby friendly NPCs to respond to."
 [
 	input TriggerResponseEvent(string) : "Fire an NPC Response Event. The parameter should match the response rules concept that any nearby friendly NPCs will try to speak."
 	input ForceTriggerResponseEvent(string) : "Fire an NPC Response Event, and force the first available NPC to speak the response (breaking them out of any scene they're in). The parameter should match the response rules concept that any nearby friendly NPCs will try to speak."
 	input ForceTriggerResponseEventNoCancel(string) : "Fire an NPC Response Event, and force the first available NPC to speak the response (but don't break them out of any scene they're in). The parameter should match the response rules concept that any nearby friendly NPCs will try to speak."
 ]
-@PointClass base(Targetname) sphere(Radius)  size(-8 -8 -8, 8 8 8) = ai_changehintgroup : "Change Hint Group"
+@PointClass base(Targetname) sphere(Radius) iconsprite("editor-ficool2/ai_changehintgroup") = ai_changehintgroup : "Change Hint Group"
 [
 	SearchType(choices) : "Search Type" : 0 : "How to search for the entities to change." = 
 	[
@@ -3366,7 +3368,7 @@
 
 
 
-@PointClass base(Targetname) sphere(PlayerActorProximity) sphere(ActorTargetProximity) sphere(PlayerTargetProximity) = ai_script_conditions : "AI Script Conditions"
+@PointClass base(Targetname) sphere(PlayerActorProximity) sphere(ActorTargetProximity) sphere(PlayerTargetProximity) iconsprite("editor-ficool2/ai_script_conditions") = ai_script_conditions : "AI Script Conditions"
 [
 	Actor(target_destination) : "Actor" : : "NPC Target"
 	
@@ -3590,7 +3592,7 @@
 	input SetTarget(target_destination) : "Sets the target NPC."
 ]
 
-@PointClass base(Targetname) = ai_citizen_response_system :
+@PointClass base(Targetname) iconsprite("editor-ficool2/ai_citizen_response_system") = ai_citizen_response_system :
 	"If placed in the level, will manage citizens responses to player's actions."
 [
 	// Inputs
@@ -3764,7 +3766,7 @@
 	]
 ]
 
-@PointClass base(Targetname, Parentname, EnableDisable) sphere(SetRadius) = point_radiation_source : "Radiation source that trips the player's geiger counter. Does no actual damage."
+@PointClass base(Targetname, Parentname, EnableDisable) sphere(SetRadius) iconsprite("vizzys-icons/point_radiation_source") = point_radiation_source : "Radiation source that trips the player's geiger counter. Does no actual damage."
 [
 	SetRadius(float): "Radius" : "0" : "Only affects the geiger counter if the player is within this radius. 0 = no radius, use intensity only"
 	SetIntensity(float): "Intensity" : "1.0" : "The intensity of the radiation source. Cannot be 0."
@@ -4498,7 +4500,7 @@
 	input	Toggle(void) : "Toggle enable/disable."
 ]
 
-@PointClass base(Targetname, Parentname) size( 16 16 16) sphere(radius) color( 255 255 0 ) = point_bugbait : "Bugbait sensor point"
+@PointClass base(Targetname, Parentname) iconsprite("vizzys-icons/point_bugbait") sphere(radius) color( 255 255 0 ) = point_bugbait : "Bugbait sensor point"
 [
 	Enabled(choices) : "Start Enabled" : 1 =
 	[
@@ -4525,7 +4527,7 @@
 ]
 
 
-@PointClass base(Targetname, Angles) size(16 16 16) line(255 255 255, targetname, target) color(247 181 82) = path_corner : "Generic path point"
+@PointClass base(Targetname, Angles) iconsprite("editor-ficool2/path_corner") line(255 255 255, targetname, target) color(247 181 82) = path_corner : "Generic path point"
 [
 	spawnflags(Flags) =
 	[
@@ -4544,7 +4546,7 @@
 	output OnPass(void) : "Fires when a path follower passes this point"
 ]
 
-@PointClass base(Targetname) size(16 16 16) color(255 0 0) = path_corner_crash : "Helicopter Crash Path"
+@PointClass base(Targetname) iconsprite("editor-ficool2/path_corner_crash") color(255 0 0) = path_corner_crash : "Helicopter Crash Path"
 [
 	target(target_destination) : "Next stop target"
 ]
@@ -4556,7 +4558,7 @@
 //
 //-------------------------------------------------------------------------
 
-@PointClass base(Targetname) size(-16 -16 -16, 16 16 16) = player_loadsaved : "Load Auto-Saved game" 
+@PointClass base(Targetname) iconsprite("editor-ficool2/player_loadsaved") = player_loadsaved : "Load Auto-Saved game" 
 [
 	duration(string) : "Fade Duration (seconds)" : "2"
 	holdtime(string) : "Hold Fade (seconds)" : "0"
@@ -4569,14 +4571,14 @@
 ]
 
 
-@PointClass base(Targetname) size(-16 -16 -16, 16 16 16) = player_weaponstrip : "Strips player's weapons"
+@PointClass base(Targetname) iconsprite("editor-ficool2/player_weaponstrip") = player_weaponstrip : "Strips player's weapons"
 [
 	// Inputs
 	input Strip(void) : "Strip player's weapons"
 	input StripWeaponsAndSuit(void) : "Strip player's weapons and his suit"
 ]
 
-@PointClass base(Targetname) size(-16 -16 -16, 16 16 16) = player_speedmod: "Speeds up or slows down player velocity over time (slow mo/fast forward)"
+@PointClass base(Targetname) iconsprite("editor-ficool2/player_speedmod") = player_speedmod: "Speeds up or slows down player velocity over time (slow mo/fast forward)"
 [
 	spawnflags(Flags) =
 	[
@@ -4773,7 +4775,7 @@
 ]
 
 
-@PointClass size( -4 -4 -4, 4 4 4 ) base(Targetname, Parentname) = env_rotorwash : "Rotorwash Effect"
+@PointClass base(Targetname, Parentname) iconsprite("vizzys-icons/env_rotorwash") = env_rotorwash : "Rotorwash Effect"
 [
 	spawnflags(Flags) =
 	[
@@ -4873,21 +4875,21 @@
 	output OnExplode(void) : "Fires when this mine actually explodes."
 ]
 
-@PointClass size( -4 -4 -4, 4 4 4 ) base(Targetname, Parentname) = env_ar2explosion :
+@PointClass base(Targetname, Parentname) iconsprite("vizzys-icons/env_ar2explosion") = env_ar2explosion :
 	"AR2 explosion visual effect. Big, volume-filling brown cloud. Does not cause damage or emit sound."
 [
 	input Explode(Void) : "Make the explosion effect."
 	material(material) : "Particle Material" : "particle/particle_noisesphere" : "The material to use for each particle in the explosion."
 ]
 
-@PointClass size( -4 -4 -4, 4 4 4 ) base(Targetname) = env_starfield : "Starfield effect" 
+@PointClass base(Targetname) iconsprite("vizzys-icons/env_starfield") = env_starfield : "Starfield effect" 
 [
 	input TurnOn(void) : "Turn on"
 	input TurnOff(void) : "Turn off"
 	input SetDensity(float) : "Set the density of the starfield. It's a multiplier, so 1 is the default."
 ]
 
-@PointClass size( -4 -4 -4, 4 4 4 ) base(Targetname, Parentname, Angles) = env_flare : "Flare"
+@PointClass base(Targetname, Parentname, Angles) size(-4 -4 -4, 4 4 4) = env_flare : "Flare"
 [
 	scale(float) : "Scale" : 1
 	duration(float) : "Duration" : 30
@@ -4906,7 +4908,7 @@
 ]
 
 
-@PointClass base(Targetname, Parentname, Angles) = env_muzzleflash : "Muzzle Flash" 
+@PointClass base(Targetname, Parentname, Angles) iconsprite("editor-ficool2/env_muzzleflash") = env_muzzleflash : "Muzzle Flash" 
 [
 	parentattachment(string) : "Parent Attachment" : "" : "The name of an attachment on the parent to hierarchically attach to."
 	scale(float) : "Scale" : "1" : "Size of the muzzle flash."
@@ -4943,7 +4945,7 @@
 	]
 ]
 
-@PointClass base(Targetname, EnableDisable) = logic_achievement :
+@PointClass base(Targetname, EnableDisable) iconsprite("vizzys-icons/logic_achievement") = logic_achievement :
 	"Sends an achievement system related event from the map to the achievement system."
 [
 	//keyvalues
@@ -5273,7 +5275,7 @@
 [
 ]
 
-@PointClass base(Targetname, Angles) studio() = point_apc_controller : "APC Controller"
+@PointClass base(Targetname, Angles) iconsprite("vizzys-icons/point_apc_controller") = point_apc_controller : "APC Controller"
 [
 	spawnflags(flags) =
 	[
@@ -5471,7 +5473,7 @@
 //	input UnableToFire(bool) : "Toggles whether the crosshair should show up as red, or unable to fire."
 //]
 
-@PointClass size( -4 -4 -4, 4 4 4 ) base(Targetname) = env_starfield : "Starfield effect" 
+@PointClass base(Targetname) iconsprite("vizzys-icons/env_starfield") = env_starfield : "Starfield effect" 
 [
 	input TurnOn(void) : "Turn on"
 	input TurnOff(void) : "Turn off"
@@ -5487,7 +5489,7 @@
 // Script entities
 //-------------------------------------------------------------------------
 
-@PointClass base(Angles,Targetname,Parentname) = script_tauremoval : "Script: Custom entity used to handle the tau removal sequence in coast. (unused)"
+@PointClass base(Angles,Targetname,Parentname) iconsprite("vizzys-icons/script_tauremoval") = script_tauremoval : "Script: Custom entity used to handle the tau removal sequence in coast. (unused)"
 [
 	vortigaunt(target_destination) : "Vortigaunt to use"
 
@@ -5496,7 +5498,7 @@
 	input RemoveTau(void) : "Start removing the Tau cannon now."
 ]
 
-@PointClass base(Targetname) = script_intro : "Script: Custom entity used to handle the intro sequence."
+@PointClass base(Targetname) iconsprite("vizzys-icons/script_intro") = script_intro : "Script: Custom entity used to handle the intro sequence."
 [
 	// Inputs
 	input Activate(void) : "Take control of the player's view and start blending the two scenes."
@@ -5538,7 +5540,7 @@
 	]
 ]
 
-@PointClass base(Targetname) iconsprite("editor/info_target.vmt") = info_player_view_proxy : "Copies a player's view as if they're at a different position. Intended to be used with script_intro."
+@PointClass base(Targetname) iconsprite("vizzys-icons/info_player_view_proxy") = info_player_view_proxy : "Copies a player's view as if they're at a different position. Intended to be used with script_intro."
 [
 	Enabled(choices) : "Start Activated" : 0 : "Starts with position offsetting enabled." =
 	[
@@ -5578,7 +5580,7 @@
 	input Stop(float) : "Stops the effect at any point."
 ]
 
-@PointClass base(Angles,Targetname,Parentname) size(-4 -4 -4, 4 4 4) color(0 0 255) line( 0 0 255, targetname, EndTargetName) = env_alyxemp : "Special effect for the Alyx's EMP device."
+@PointClass base(Angles,Targetname,Parentname) line( 0 0 255, targetname, EndTargetName) iconsprite("vizzys-icons/env_alyxemp") = env_alyxemp : "Special effect for the Alyx's EMP device."
 [
 	Type(choices) : "EMP Type" : 0 =
 	[
@@ -5606,7 +5608,7 @@
 // Countdown timer for the teleporter at the end of the game
 //-------------------------------------------------------------------------
 
-@PointClass base(Targetname) iconsprite("editor/info_target.vmt")  = info_teleporter_countdown : "Countdown timer for the teleporter. The status of the teleporter will appear on vgui_screen entities whose panel is 'teleport_countdown_screen'." 
+@PointClass base(Targetname) iconsprite("vizzys-icons/info_teleporter_countdown") = info_teleporter_countdown : "Countdown timer for the teleporter. The status of the teleporter will appear on vgui_screen entities whose panel is 'teleport_countdown_screen'." 
 [
 	// Inputs
 	input StartCountdown(float) : "Starts the teleporter countdown. Requires an argument which is the number of seconds for the countdown."
@@ -5647,7 +5649,7 @@
 	]
 ]
 
-@FilterClass base(BaseFilter) iconsprite("editor/filter_class.vmt") = filter_combineball_type :
+@FilterClass base(BaseFilter) iconsprite("vizzys-icons/filter_combineball_type") = filter_combineball_type :
 	"A filter that filters by combine ball type."
 [
 	balltype(choices) : "Ball Type" : 1 =
@@ -5658,7 +5660,7 @@
 	]	
 ]
 
-@PointClass base(Targetname) = env_entity_dissolver: "Entity Dissolver"
+@PointClass base(Targetname) iconsprite("editor-ficool2/env_entity_dissolver") = env_entity_dissolver: "Entity Dissolver"
 [
 	input Dissolve(target_destination) : "Dissolve target, if no target is passed it'll use the target specified in the target field."
 	target(target_destination) : "Target to Dissolve" : "" : "Targetname of the entity you want to dissolve."
@@ -5705,7 +5707,7 @@
 
 ]
 
-@PointClass base(Targetname, Angles) sphere(radius) sphere(inner_radius) = point_push: "Point Push"
+@PointClass base(Targetname, Angles) iconsprite("editor-ficool2/point_push") sphere(radius) sphere(inner_radius) = point_push: "Point Push"
 [
 	spawnflags(Flags) = 
 	[
@@ -5777,7 +5779,7 @@
 	output OnShotDown(void) : "Fired when the striderbuster shatters after being shot down by Hunters"
 ]
 
-@PointClass base(Targetname, Parentname) sphere(radius) = point_flesh_effect_target : "Flesh Effect Target"
+@PointClass base(Targetname, Parentname) sphere(radius) iconsprite("vizzys-icons/point_flesh_effect_target") = point_flesh_effect_target : "Flesh Effect Target"
 [
 	radius(float) : "Radius" : 8 : "Radius of the effect when active"
 

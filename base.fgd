@@ -757,7 +757,7 @@
 	input SetHintGroup(string) : "Sets this NPC's hint group."
 ]
 
-@PointClass base(Targetname, Parentname, Angles) iconsprite("editor/info_target.vmt") = info_npc_spawn_destination : 
+@PointClass base(Targetname, Parentname, Angles) iconsprite("vizzys-icons/info_npc_spawn_destination") = info_npc_spawn_destination : 
 	"NPC Spawn Destination. (Consult npc_template_maker help for more info)"
 [
 	ReuseDelay(float) : "Reuse Delay" : 1 : "After an NPC is spawned at this destination, the delay before this destination is eligible for selection again."
@@ -805,7 +805,7 @@
 	input SetSpawnFrequency(float) : "Sets how often (in seconds) a new NPC will be spawned."
 ]
 
-@PointClass base(BaseNPCMaker) iconsprite("editor/npc_maker.vmt") sphere(Radius) sphere(MinSpawnDistance) = npc_template_maker : 
+@PointClass base(BaseNPCMaker) iconsprite("editor-ficool2/npc_template_maker") sphere(Radius) sphere(MinSpawnDistance) = npc_template_maker : 
 	"An entity that creates NPCs. The NPCs it creates are clones of a template NPC. NPCs are spawned around this maker's origin, or at specified destination points."
 [
 	spawnflags(Flags) = 
@@ -1082,6 +1082,9 @@
 	output OnStartTouchAll(void) : "Fired when an entity starts touching this trigger, and no other entities are touching it. Only entities that passed this trigger's filters are considered."
 	output OnEndTouch(void) : "Fired when an entity stops touching this trigger. Only entities that passed this trigger's filters will cause this output to fire."
 	output OnEndTouchAll(void) : "Fires when an entity stops touching this trigger, and no other entities are touching it. Only entities that passed this trigger's filters are considered."
+
+	// Inputs
+	input DisableAndEndTouch(void) : "Disables this trigger and calls EndTouch on all currently-touching entities."
 ]
 
 @BaseClass = worldbase
@@ -1246,7 +1249,7 @@
 	]
 ]
 
-@PointClass base(Targetname) frustum(FOV,4,250,250 250 250,-1) = env_zoom : 
+@PointClass base(Targetname) frustum(FOV,4,250,250 250 250,-1) iconsprite("editor-ficool2/env_zoom") = env_zoom : 
 	"An entity that can be used to control the player's FOV. Useful for scenes where the player's view is being controlled, or player-usable binoculars/telescopes, etc."
 [
 	Rate(float) : "Seconds to reach target" : "1.0" : "Amount of time it should take to reach the specified FOV."
@@ -1264,7 +1267,7 @@
 	]
 ]
 
-@PointClass base(Targetname) = env_screenoverlay: 
+@PointClass base(Targetname) iconsprite("editor-ficool2/env_screenoverlay") = env_screenoverlay : 
 	"An entity that can display and control a set of screen overlays, to be displayed over the player's view. Useful for view effects like drunkenness, or teleporter afterimages, etc."
 [
 	OverlayIndex(integer) : "Overlay Index" : -1 : "If this value is set to a number between 0 and 9, this overlay will use one of Mapbase's indexed overlay slots. Overlays in different slots will display on the screen at the same time."
@@ -1296,7 +1299,7 @@
 	input	SwitchOverlay(float) : "Switch to displaying a specific overlay. Pass in the desired overlay number in the parameter."
 ]
 
-@PointClass base(Targetname) = env_screeneffect :
+@PointClass base(Targetname) iconsprite("editor-ficool2/env_screeneffect") = env_screeneffect :
 	"Allows screenspace effects to be played on the player's view."
 [
 	type(choices) : "Effect Type" : 0 : "Which effect to use." =
@@ -1311,7 +1314,7 @@
 	input   StopEffect(float) : "Stop the effect."
 ]
 
-@PointClass base(Targetname) = env_texturetoggle : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/env_texturetoggle") = env_texturetoggle : 
 	"An entity that allows you to change the textures on other brush-built entities."
 [
 	target(target_destination) : "Target Brush(es)." 
@@ -1336,7 +1339,7 @@
 	]
 ]
 
-@PointClass base(Parentname) color(180 10 180) = env_particlelight : 
+@PointClass base(Parentname) color(180 10 180) iconsprite("editor-ficool2/env_particlelight") = env_particlelight : 
 	"An entity that can be used to light the smoke particles emitted by env_smokestack entities. Does not light any other particle types."
 [
 	Color(color255) : "Color" : "255 0 0" : "Color emitted by this light." 
@@ -1351,7 +1354,7 @@
 	PSName(target_destination) : "Particle System Entity" : "" : "Set this to the name of the env_smokestack that you want this light to affect."
 ]
 
-@PointClass base(Targetname, Angles) color(255 0 0) = env_sun : 
+@PointClass base(Targetname, Angles) color(255 0 0) iconsprite("editor-ficool2/env_sun") = env_sun : 
 	"An entity to control & draw a sun effect in the sky."
 [
 	target(target_destination) : "Viewer entity" : : "Name of an entity used to determine where the sun is in the skybox. The sun should be lined up on a line from this entity to the env_sun entity."
@@ -1381,7 +1384,7 @@
 	input SetColor(color255) : "Change the sun's color. Format: <Red 0-255> <Green 0-255> <Blue 0-255>"
 ]
 
-@PointClass base(Targetname) = game_ragdoll_manager : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/game_ragdoll_manager") = game_ragdoll_manager : 
 	"An entity to control the number of ragdolls in the world, for performance reasons." 
 [
 	MaxRagdollCount(integer) : "Max Ragdoll Count" : -1 : "Sets the max number of ragdolls that can be in the world at a time (if they are flagged to fade). Set to -1 if you want to use the default value (g_ragdoll_maxcount)."
@@ -1398,7 +1401,7 @@
 	input SetMaxRagdollCountDX8(integer) : "Set the Max Ragdoll Count on DX8 hardware."
 ]
 
-@PointClass base(Targetname) = game_gib_manager : "An entity to control the number of gibs in the world, for performance reasons." 
+@PointClass base(Targetname) iconsprite("editor-ficool2/game_gib_manager") = game_gib_manager : "An entity to control the number of gibs in the world, for performance reasons." 
 [
 	maxpieces(integer)	: "Max Gib Count" : -1 : "Sets the max number of gib that can be spawned at a time. (-1=no limit)"
 	maxpiecesdx8(integer)	: "Max Gib Count On DX8" : -1 : "Sets the max number of gib that can be spawned at a time under DX8. (-1=use Max Gib Count setting)"
@@ -1433,7 +1436,7 @@
 	]
 ]
 
-@PointClass base(Targetname, Parentname, Angles) color(255 255 255) = env_smokestack : 
+@PointClass base(Targetname, Parentname, Angles) studioprop("models/editor-ficool2/cone_helper_gray.mdl") = env_smokestack : 
 	"An entity that spits out a constant stream of smoke. See particlezoo.vmf for sample usage. You can place up to two env_particlelight entities near the smoke stack to add ambient light to its particles."
 [
 	//targetname(target_source) : "Name" : : "The name that other entities refer to this entity by."
@@ -1494,7 +1497,7 @@
 	output OnBeginFade(void) : "Fired when the fade has begun."
 ]
 
-@PointClass base(Targetname) = env_player_surface_trigger : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/env_player_surface_trigger") = env_player_surface_trigger : 
 	"An entity that monitors the material of the surface the player is standing on, and fires outputs whenever it changes to/from a specific material."
 [
 	gamematerial(choices) : "Game Material to Watch" : "0" : "The material to watch. When the player stands on/off this material, this entity's outputs will be fired." =
@@ -1704,7 +1707,7 @@
 	input SetInactive(void) : "Make the vgui screen invisible."
 ]
 
-@PointClass base(vgui_screen_base) size(-4 -4 -4, 4 4 4) = vgui_screen : 
+@PointClass base(vgui_screen_base) iconsprite("vizzys-icons/vgui_screen") = vgui_screen : 
 	"A VGUI screen. Useful for in-world monitors." 
 [
 ]
@@ -1826,7 +1829,7 @@
 	input Shoot(void) : "Force the gibshooter to create and shoot a gib."
 ]
 
-@PointClass base(Targetname, RenderFxChoices) size(-4 -4 -4, 4 4 4) line(255 255 255, targetname, LightningStart, targetname, LightningEnd) = env_beam : 
+@PointClass base(Targetname, RenderFxChoices) iconsprite("editor-ficool2/env_beam") line(255 255 255, targetname, LightningStart, targetname, LightningEnd) = env_beam : 
 	"An entity that creates a visible beam between two points. The points can be attached to entities to make the beam move around."
 [
 	renderamt(integer) : "Brightness (1 - 255)" : 100
@@ -1893,7 +1896,7 @@
 	output OnTouchedByEntity(void) : "Fired when an entity touches the beam. Only fired if the entity passes the 'Touch Type' choice."
 ]
 
-@PointClass base(Targetname, Parentname) size(-4 -4 -4, 4 4 4) = env_beverage : 
+@PointClass base(Targetname, Parentname) iconsprite("editor-ficool2/env_beverage") = env_beverage : 
 	"HL1 Legacy: Beverage Dispenser."
 [
 	health(integer) : "Capacity" : 10 : "Number of cans in the dispenser."
@@ -1933,7 +1936,7 @@
 	]
 ]
 
-@PointClass base(Targetname, Parentname) size(-16 -16 -16, 16 16 16) = env_funnel : 
+@PointClass base(Targetname, Parentname) iconsprite("editor-ficool2/env_funnel") = env_funnel : 
 	"The suck-in effect from the HL1 Resonance Cascade sequence."
 [
 	spawnflags(flags) =
@@ -1948,7 +1951,7 @@
 	input Activate(void) : "Activates the effect."
 ]
 
-@PointClass base(Targetname, Parentname) size(-16 -16 -16, 16 16 16) color(255 0 0) = env_blood : 
+@PointClass base(Targetname, Parentname) iconsprite("editor-ficool2/env_blood") color(255 0 0) = env_blood : 
 	"An entity used to spawn blood effects." 
 [
 	spraydir(angle) : "Spray Direction (Pitch Yaw Roll)" : "0 0 0" : "The general direction that the blood should spray and the direction to trace to apply the decal."
@@ -1974,7 +1977,7 @@
 	input EmitBlood(void) : "Triggers the blood effect."
 ]
 
-@SolidClass base(Targetname, Parentname) = env_bubbles : 
+@SolidClass base(Targetname, Parentname) iconsprite("editor-ficool2/env_bubbles") = env_bubbles : 
 	"An entity used to create a volume in which to spawn bubbles." 
 [
 	density(integer) : "Bubble density" : 2
@@ -2033,7 +2036,7 @@
 	input SetIgnoredEntity(target_destination) : "Sets the ignored entity."
 ]
 
-@PointClass base(Targetname, Parentname) color(200 50 0)  size(-8 -8 -8, 8 8 8) = env_smoketrail : 
+@PointClass base(Targetname, Parentname) color(200 50 0) iconsprite("editor-ficool2/env_smoketrail") = env_smoketrail : 
 	"An entity that creates a smoke trail." 
 [
 	opacity(float) : "Sprite Opacity" : "0.75" : "Opacity of the sprites (range from 0 - 1)."
@@ -2080,7 +2083,7 @@
 	output OnPushedPlayer(void) : "Fires when the player is pushed by the explosion."
 ]
 
-@PointClass base(Targetname, Parentname, Angles) line(255 255 255, targetname, directionentityname) iconsprite("editor/env_physexplosion.vmt") = env_physimpact : 
+@PointClass base(Targetname, Parentname, Angles) line(255 255 255, targetname, directionentityname) iconsprite("vizzys-icons/env_physimpact") = env_physimpact : 
 	"An entity that will cause a physics impact on another entity."
 [
 	//angles(string) : "Pitch Yaw Roll (Y Z X)" : "0 0 0" : "Direction to project the impact."
@@ -2183,7 +2186,7 @@
 	input Disable(void) : "Disable fire source."
 ]
 
-@PointClass base(Targetname, Parentname) size(-4 -4 -4, 4 4 4) color(255 255 0) sphere(fireradius) = env_firesensor : 
+@PointClass base(Targetname, Parentname) iconsprite("editor-ficool2/env_firesensor") sphere(fireradius) = env_firesensor : 
 	"An entity that detects changes in heat nearby."
 [
 	spawnflags(flags) =
@@ -2203,7 +2206,7 @@
 	output OnHeatLevelEnd(void) : "Fires when the heat level drops below the target level."
 ]
 
-@PointClass base(Targetname) size(-4 -4 -4, 4 4 4) color(0 180 0) = env_entity_igniter : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/env_entity_igniter") = env_entity_igniter : 
 	"An entity that catches a target entity on fire. If the entity is an animating model, it will have sprite flames attached to its skeleton. Otherwise the entity will emit particle flame puffs."
 [
 	target(target_destination) : "Entity to ignite" : : "Name of the entity to catch on fire."
@@ -2306,7 +2309,7 @@
 	input SpreadSpeed(integer) : "Sets the spread speed in units per second."
 ]
 
-@PointClass base(Targetname, Parentname, RenderFxChoices) size(-4 -4 -4, 4 4 4) line(255 255 255, targetname, LaserTarget) = env_laser : 
+@PointClass base(Targetname, Parentname, RenderFxChoices) iconsprite("editor-ficool2/env_laser") line(255 255 255, targetname, LaserTarget) = env_laser : 
 	"An entity that creates a laser beam between itself and a given target."
 [
 	LaserTarget(target_destination) : "Target of Laser" : : "Name of entity, or entities, to strike at. The target is randomly chosen if there are multiple entities matching the given name."
@@ -2344,7 +2347,7 @@
 	output OnTouchedByEntity(void) : "Fired when an entity touches the laser. Please note this fires for each frame the entity is touching, unlike env_beam."
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = env_message : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/env_message") = env_message : 
 	"An entity that draws a text message on player's HUDs."
 [
 	message(string) : "Message Text"
@@ -2370,7 +2373,7 @@
 	output OnShowMessage(void) : "Fired when the message is activated."
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = env_hudhint : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/env_hudhint") = env_hudhint : 
 	"An entity to control the display of HUD hints. HUD hints are used to show the player what key is bound to a particular command."
 [
 	spawnflags(flags) =
@@ -2412,7 +2415,7 @@
 	input StopShake(void) : "Stop the shake."
 ]
 
-@PointClass sphere(radius) size(-4 -4 -4, 4 4 4) base(Targetname, Parentname) = env_viewpunch :
+@PointClass sphere(radius) iconsprite("editor-ficool2/env_viewpunch") base(Targetname, Parentname) = env_viewpunch :
 	"Causes a view punch on players." 
 [
 	spawnflags(flags) =
@@ -2428,7 +2431,7 @@
 	input ViewPunch(void) : "Performs the view punch."
 ]
 
-@PointClass base(Targetname, Parentname) = env_rotorwash_emitter :
+@PointClass base(Targetname, Parentname) iconsprite("vizzys-icons/env_rotorwash_emitter") = env_rotorwash_emitter :
 	"Creates rotorwash." 
 [
 	altitude(float) : "Altitude" : "1024" : "Altitude the rotorwash will show up."
@@ -2478,7 +2481,7 @@
 	massoverride(float) : "Mass override" : "0" : "EPISODIC ONLY. Specify an arbitrary mass for the gibs emitted by me."
 ]
 
-@PointClass base(gibshooterbase, RenderFields) iconsprite("editor/env_shooter.vmt") = env_rotorshooter : 
+@PointClass base(gibshooterbase, RenderFields) iconsprite("editor-ficool2/env_rotorshooter") = env_rotorshooter : 
 	"An entity that creates gibs when it's within the influence of a helicopter's rotor wash."
 [
 	shootmodel(studio) : "Model" : "" : "Thing to shoot out.  Can be a .mdl or a .vmt."
@@ -2509,7 +2512,7 @@
 	rotortimevariance(float) : "Time variance" : "0.3" : "The random amount to vary the time it has to be under the rotor before it shoots a gib."
 ]
 
-@PointClass base(Targetname, Parentname, Angles) iconsprite("editor/env_shooter.vmt") = env_break_shooter : 
+@PointClass base(Targetname, Parentname, Angles) iconsprite("vizzys-icons/env_break_shooter") = env_break_shooter : 
 	"An entity that shoots func_breakable gibs."
 [
 	angles(angle) : "Gib Direction (Pitch Yaw Roll)" : "0 0 0" : "The direction the gibs will fly."
@@ -2819,7 +2822,7 @@
 //
 //-------------------------------------------------------------------------
 
-@PointClass base(Targetname) = game_weapon_manager : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/game_weapon_manager") = game_weapon_manager : 
 	"An entity used to limit the number of a particular weapon type in the world. Useful in places where NPCs are spawning rapidly, dying, and dropping weapons." 
 [
 	weaponname(string) : "Weapon Classname" : "" : "Classname of the weapon type to limit."
@@ -2838,7 +2841,7 @@
 	input EndGameSP(string) : "End the SP game. String could be a game-specific context."
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = game_player_equip : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/game_player_equip") = game_player_equip : 
 	"An entity that gives equipment to the player who activates it. To use, add new keys to this entity, where each key is the classname of a weapon/item, and the corresponding value is the number of those weapons/items to give to the player who uses this entity. If the 'Use Only' spawnflag isn't set, then players can just touch this entity to get the equipment."
 [
 	spawnflags(flags) =
@@ -2848,7 +2851,7 @@
 	//master(target_destination) : "Team Master (Obsolete)" : : "Legacy support: The name of a master entity. If the master hasn't been activated, this entity will not activate."	
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = game_player_team : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/game_player_team") = game_player_team : 
 	"An entity that changes the team of the player who activates it."
 [
 	spawnflags(flags) =
@@ -2861,7 +2864,7 @@
 	//master(target_destination) : "Master (Obsolete)" : : "Legacy support: The name of a master entity. If the master hasn't been activated, this entity will not activate."	
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = game_score : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/game_score") = game_score : 
 	"An entity that awards/deducts points from the player who activates it." 
 [
 	spawnflags(flags) =
@@ -2938,7 +2941,7 @@
 	input SetRPCDetails(string) : "Sets the RPC details."
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = skybox_swapper : 
+@PointClass base(Targetname) iconsprite("vizzys-icons/skybox_swapper") = skybox_swapper : 
 	"An entity that swaps skybox textures." 
 [
 	SkyboxName(string) : "Sky Name" : "" : "The name of the sky texture to change to."
@@ -2946,12 +2949,12 @@
 	input Trigger(void) : "Causes the current sky texture to change to the one specified in this entity."
 ]
 
-@PointClass base(Parentname, Angles) size(-2 -2 -2, 2 2 2) = point_enable_motion_fixup : 
+@PointClass base(Parentname, Angles) iconsprite("editor-ficool2/point_enable_motion_fixup") = point_enable_motion_fixup : 
 	"An entity used to move a motion-disabled prop when it enables motion. Parent this entity to the prop, and when the prop has its motion enabled, it will immediately teleport to the origin of this entity."
 [
 ]
 
-@PointClass base(Targetname, Parentname) size(-8 -8 -8, 8 8 8) sphere(radius) = point_message : 
+@PointClass base(Targetname, Parentname) sphere(radius) iconsprite("editor-ficool2/point_message") = point_message : 
 	"An entity that displays a text message in the world, at its origin."
 [
 	spawnflags(flags) =
@@ -2973,7 +2976,7 @@
 	input SetMessage(string) : "Sets the message's text."
 ]
 
-@PointClass base(point_message) size(-8 -8 -8, 8 8 8) sphere(radius) = point_message_localized : 
+@PointClass base(point_message) sphere(radius) iconsprite("editor-ficool2/point_message") = point_message_localized : 
 	"A variant of point_message that allows localized text and newline to be used."
 [
 	message(string) : "Localized Entity Message" : : "The message displayed by this entity. Use '/n' for newline."
@@ -3028,6 +3031,12 @@
 		2 :  "[2] No Dynamic Light" : 1
 	]
 
+	IgnoreSolid(choices) : "Ignore Solid" : 0 : "If set, this spotlight won't trace for solids." =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+
 	spotlightlength(integer) : "Spotlight Length" : 500 : "Length of the spotlight beam."
 	spotlightwidth(integer) : "Spotlight Width" : 50 : "Width of the spotlight beam."
 	rendercolor(color255) : "Color (R G B)" : "255 255 255"
@@ -3048,7 +3057,7 @@
 
 ]
 
-@PointClass base(Targetname, Parentname) size(-8 -8 -8, 8 8 8) sphere(m_flRadius) = point_tesla : 
+@PointClass base(Targetname, Parentname) iconsprite("editor-ficool2/point_tesla") sphere(m_flRadius) = point_tesla : 
 	"An entity that creates tesla lightning arcs around its origin."
 [
 	m_SourceEntityName(target_destination) : "Source Entity" : "" : "If specified, tesla lightning will originate from the specified entity. Otherwise, they originate from this entity."
@@ -3092,7 +3101,7 @@
 	input Command(string) : "Command to execute."
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = point_bonusmaps_accessor : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/point_bonusmaps_accessor") = point_bonusmaps_accessor : 
 	"An entity that relays bonus maps changes."
 [
 	filename(string) : "File Name" : ""
@@ -3161,7 +3170,7 @@
 	output Attack2Axis(string) : "An output that fires whenever the state of the player's secondary attack key changes. i.e. 1 when the player has the secondary attack key down, 0 otherwise."
 ]
 
-@PointClass base(Targetname) = point_entity_finder :
+@PointClass base(Targetname) iconsprite("teamspen210/point_entity_finder") = point_entity_finder :
 	"An entity that will find an entity and pass it along as the !Caller with the OutEntity output.  Requires using !Caller as the parameter on the input."
 [
 	filtername(filterclass) : "Filter Name" : : "Filter to use to narrow set of findable entities. See filter_activator_name for more explanation."
@@ -3181,7 +3190,7 @@
 	output OnFoundEntity(void) : "Fired when FindEntity is input and an entity was found. Passes the found entity as !Caller."
 ]
 
-@PointClass base(Targetname) sphere(radius) = point_advanced_finder :
+@PointClass base(Targetname) sphere(radius) iconsprite("vizzys-icons/point_advanced_finder") = point_advanced_finder :
 	"An enhanced entity finder that finds entities that pass a filter and fires OnFoundEntity for each of them."
 [
 	// 
@@ -3264,7 +3273,7 @@
 	input Activate(void) : "Force the decal to apply itself to the world."
 ]
 
-@PointClass = info_no_dynamic_shadow : 
+@PointClass iconsprite("editor-ficool2/info_no_dynamic_shadow") = info_no_dynamic_shadow : 
 	"Use this entity to mark surfaces that shouldn't receive dynamic shadows. Useful to apply to walls and floors "+
 	"where shadows are drawn improperly, giving away the location of enemies."
 [
@@ -3305,7 +3314,7 @@
 	fademaxdist(float) : "End Fade Dist" : 0 : "Maximum distance at which the overlay is visible (0 = don't fade out)."
 ]
 
-@PointClass size(-8 -8 -8, 8 8 8) sidelist(sides) sidelist(sides2) overlay_transition() = info_overlay_transition : "Overlay Transition" 
+@PointClass sidelist(sides) sidelist(sides2) overlay_transition() iconsprite("vizzys-icons/info_overlay_transition") = info_overlay_transition : "Overlay Transition" 
 [
 	material(material) : "Material"
 	sides(sidelist) : "Brush faces"
@@ -3319,7 +3328,7 @@
 	DebugDraw(integer) : "Show Debug" : 0 : "Boolean value (0 or 1)."
 ]
 
-@PointClass size(-4 -4 -4, 4 4 4) color(0 180 0) = info_intermission : 
+@PointClass color(0 180 0) iconsprite("vizzys-icons/info_intermission") = info_intermission : 
     "An entity that defines an intermission spot where dead players will float until they respawn."
 [
 	target(target_destination) : "Entity to look at" : : "Name of entity that dead players will face while in intermission at this spot."
@@ -3330,7 +3339,7 @@
 [
 ]
 
-@PointClass base(Targetname) color(255 255 255) size(-8 -8 -8, 8 8 8) = info_null : 
+@PointClass base(Targetname) color(255 255 255) iconsprite("editor-ficool2/info_null") = info_null : 
 	"An entity that's immediately removed on spawning. Useful as a spotlight target."
 [
 ]
@@ -3536,7 +3545,7 @@
 ]
 
 
-@PointClass base(Targetname, EnableDisable, Parentname, Angles) iconsprite("editor/info_target.vmt") sphere(radius) = phys_ragdollmagnet : 
+@PointClass base(Targetname, EnableDisable, Parentname, Angles) iconsprite("vizzys-icons/phys_ragdollmagnet") sphere(radius) = phys_ragdollmagnet : 
 	"An entity that acts like a magnet for ragdolls. Useful for crafting exaggerated ragdoll behavior (i.e. guys falling over rails on death). If the "+
 	"Bar Magnet spawnflag is set, the magnet works like it was a cylindrical magnet i.e. it attracts ragdolls to the nearest point on a line."
 [
@@ -3556,7 +3565,7 @@
 	output OnUsed(vector) : "Fires when this magnet is used by a ragdoll. Passes the ragdoll's original force + the force this magnet has applied."
 ]
 
-@PointClass base(Targetname) iconsprite("editor/info_lighting.vmt")  = info_lighting : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/info_lighting") = info_lighting : 
 	"An entity that can be used to change the lighting origin of a prop_static. Set the prop_static's Lighting Origin to point at this entity to "+
 	"make the prop_static light as if it was at the info_lighting's origin. Good for prop_static entities that are embedded in world geometry (like rocks/windows/etc)."
 [
@@ -3680,7 +3689,7 @@
 	input TurnOff(void) : "Turn the link off."
 ]
 
-@PointClass base(info_node_link) color(220 180 0) iconsprite("editor/info_node_link.vmt") line(255 255 255, nodeid, StartNode, nodeid, EndNode) = info_node_link_oneway :
+@PointClass base(info_node_link) color(220 180 0) iconsprite("vizzys-icons/info_node_link_oneway") line(255 255 255, nodeid, StartNode, nodeid, EndNode) = info_node_link_oneway :
 	"A variant of info_node_link that only works from one direction. " +
 	"Navigation requests from the start node to the end node will always pass, but requests from the end node to the start node will not be allowed. " +
 	"If the link is disabled, the link will work from neither direction. Exclusion rules still apply and excluded NPCs will be able to cross from the opposite direction."
@@ -3697,7 +3706,7 @@
 	]
 ]
 
-@PointClass base(info_node_link) color(220 180 0) iconsprite("editor/info_node_link.vmt") line(255 255 255, nodeid, StartNode, nodeid, EndNode) = info_node_link_filtered :
+@PointClass base(info_node_link) color(220 180 0) iconsprite("vizzys-icons/info_node_link_filtered") line(255 255 255, nodeid, StartNode, nodeid, EndNode) = info_node_link_filtered :
 	"A variant of info_node_link that uses an entity filter. " +
 	"Only entities that pass the specified filter can use this link. While disabled, the filter is disregarded and filtering is handed to the regular exclusion rules."
 [
@@ -3713,7 +3722,7 @@
 	input SetLinkFilter(target_destination) : "Sets the link's filter."
 ]
 
-@PointClass base(info_node_link) color(220 180 0) iconsprite("editor/info_node_link.vmt") line(255 255 255, nodeid, StartNode, nodeid, EndNode) = info_node_link_logic :
+@PointClass base(info_node_link) color(220 180 0) iconsprite("vizzys-icons/info_node_link_logic") line(255 255 255, nodeid, StartNode, nodeid, EndNode) = info_node_link_logic :
 	"A variant of info_node_link that fires outputs when a NPC tries to use it. " +
 	"Otherwise functions identically to a regular info_node_link."
 [
@@ -3722,7 +3731,7 @@
 	output OnUsageAcceptedWhileDisabled(void) : "Fires when a NPC that meets all of the requirements tries to use this link, but it's disabled."
 ]
 
-@PointClass wirebox(mins, maxs) base(Targetname) = info_node_link_controller :
+@PointClass wirebox(mins, maxs) base(Targetname) iconsprite("teamspen210/info_node_link_controller") = info_node_link_controller :
 	"An entity that controls all connections between nodes that intersect the controller's volume. "+
 	"This allows for mass enabling/disabling of all node connections through a volume."
 [
@@ -3755,7 +3764,7 @@
 	input SetInvert(integer) : "Change the invert exclusion rule"
 ]
 
-@PointClass wirebox(mins, maxs) base(info_node_link_controller) = info_template_link_controller :
+@PointClass wirebox(mins, maxs) base(info_node_link_controller) iconsprite("vizzys-icons/info_template_link_controller") = info_template_link_controller :
 	"An entity that controls all connections between nodes that intersect the controller's volume. "+
 	"This allows for mass enabling/disabling of all node connections through a volume.\n\n"+
 	"NOTE: Due to the way this works, using info_node_link_logic may cause several identical instances of the outputs to be fired instead of one. One way to remedy this by passing your action through a relay with fast refire disabled."
@@ -3763,7 +3772,7 @@
 	ReferenceTemplate(target_destination) : "Reference Template" : : "The point_template whose first template would be used as a reference for all of this controller's links. The first template MUST be info_node_link or an entity derived from it, like info_node_link_filtered."
 ]
 
-@PointClass sphere(radius) base(Targetname, Parentname) = info_radial_link_controller :
+@PointClass sphere(radius) base(Targetname, Parentname) iconsprite("teamspen210/info_radial_link_controller") = info_radial_link_controller :
 	"This entity automatically severs node connections that pass through its radius. If it moves, it will restore those connections."
 [
 	radius(float) : "Radius (Use Helper!)" : 120
@@ -3814,7 +3823,7 @@
 	spawnflags(Flags) = [ 1 : "[1] Initially dark" : 0 ]
 ]
 
-@PointClass base(Targetname, Parentname, Angles) iconsprite("editor/light.vmt") sphere(distance) lightcone() size(-4 -4 -4, 4 4 4) = light_dynamic : 
+@PointClass base(Targetname, Parentname, Angles) iconsprite("editor/light.vmt") sphere(distance) lightcone() = light_dynamic : 
 	"An invisible lightsource that changes in some way over time." 
 [
 	target(target_destination) : "Entity to point at" : : "The name of an entity in the map that the dynamic light will point at."
@@ -4085,17 +4094,17 @@
 	_minlight(string) : "Minimum Light Level" : : "The minimum level of ambient light that hits this brush."
 ]
 
-@KeyFrameClass base(Targetname, Parentname, Angles, KeyFrame) size(-6 -6 -6, 6 6 6) color(255 200 0) keyframe() = keyframe_track : 
+@KeyFrameClass base(Targetname, Parentname, Angles, KeyFrame) iconsprite("vizzys-icons/keyframe_track") keyframe() = keyframe_track : 
 	"Animation KeyFrame"
 [
 ]
 
-@MoveClass base(Targetname, Parentname, KeyFrame, Mover) size(-8 -8 -8, 8 8 8) color(255 170 0) animator() = move_keyframed : 
+@MoveClass base(Targetname, Parentname, KeyFrame, Mover) iconsprite("vizzys-icons/move_keyframed") animator() = move_keyframed : 
 	"Keyframed Move Behavior"
 [
 ]
 
-@MoveClass base(Targetname, Parentname, Mover, KeyFrame) size(-8 -8 -8, 8 8 8) color(255 0 0) animator() = move_track : 
+@MoveClass base(Targetname, Parentname, Mover, KeyFrame)  iconsprite("vizzys-icons/move_track") animator() = move_track : 
 	"Track Move Behavior"
 [
 	WheelBaseLength(integer) : "Distance between the wheels" : 50
@@ -4785,7 +4794,7 @@
 	input SpawnDust(void) : "Spawn a dust puff."
 ]
 
-@PointClass base( Targetname, Parentname, Angles ) size( -8 -8 -8, 8 8 8 ) = env_particlescript : 
+@PointClass base( Targetname, Parentname, Angles ) iconsprite("vizzys-icons/env_particlescript") = env_particlescript : 
 	"An entity that has special animation events that can be fired by a model with an animation inside its .qc designed for"+
 	"use by this entity."
 [
@@ -4797,7 +4806,7 @@
 
 
 // NEEDHELP
-@PointClass base( Targetname, Parentname, Angles ) size( -8 -8 -8, 8 8 8 ) = env_effectscript : 
+@PointClass base( Targetname, Parentname, Angles ) iconsprite("editor-ficool2/env_effectscript") = env_effectscript : 
 	"An entity that allows you to script special visual effects via a script file."
 [
 	model(studio) : "Script Model" : "models/Effects/teleporttrail.mdl" : "Model to use for animation sequences."
@@ -4899,7 +4908,7 @@
 	output OnStartFollow(void) : "Fired when the point_viewcontrol activates, usually due to the Enable input being received."
 ]
 
-@PointClass base(Targetname) = point_posecontroller : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/point_posecontroller") = point_posecontroller : 
 	"An entity that controls a pose parameter of a prop and cycles the pose clientside." 
 [
 	PropName(target_destination) : "Target" : : "Name of the prop to control. Can be any animating entity."
@@ -4984,7 +4993,7 @@
 ]
 
 
-@PointClass base(Targetname) = logic_branch_listener :
+@PointClass base(Targetname) iconsprite("editor-ficool2/logic_branch_listener") = logic_branch_listener :
 	"Contains a list of logic_branch entities and fires outputs when the state of any of the logic_branches changes.\n\n"+
 	"This entity is used to fire an event when a set of conditions are all satisfied."
 [
@@ -5135,7 +5144,7 @@
 	output OnTrigger8(void) : "This output has a chance to fire when the entity is triggered."
 ]
 
-@PointClass base(Targetname, EnableDisable) size(-8 -8 -8, 8 8 8) = logic_register_activator :
+@PointClass base(Targetname, EnableDisable) iconsprite("vizzys-icons/logic_register_activator") = logic_register_activator :
 	"Stores an entity and sends messages with it as the activator\n" +
 	"Useful for keeping track of entities with mangled names due " +
 	"to template spawners and instances."
@@ -5298,7 +5307,7 @@
 ]
 
 
-@PointClass base(Targetname) = hammer_updateignorelist :
+@PointClass base(Targetname) iconsprite("editor-ficool2/hammer_updateignorelist") = hammer_updateignorelist :
 	"Specifies entities that are to be ignored by the hammer_update_safe_entities console command. " + 
 	"Enter the targetnames of entities that you want to exclude into the list of fields here. " +
 	"Several of these may exist in a map."
@@ -5322,7 +5331,7 @@
 ]
 
 
-@PointClass base(Targetname) size(-4 -4 -4, 4 4 4) color(0 255 0) = logic_collision_pair : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/logic_collision_pair") = logic_collision_pair : 
 	"An entity that can be used to enables/disable vphysics collisions between two target entities."
 [
 	attach1(target_destination) : "Attachment 1" : "" : "The first entity."
@@ -5425,7 +5434,7 @@
 	output OnHeardSound(void) : "Fired whenever this microphone hears any sound it cares about."
 ]
 
-@PointClass base(Targetname, EnableDisable ) = math_remap :
+@PointClass base(Targetname, EnableDisable ) iconsprite("editor-ficool2/math_remap") = math_remap :
 	"An entity that remaps a range of input values to a given range of output values."
 [
 	spawnflags(flags) = 
@@ -5446,7 +5455,7 @@
 	output OutValue(float) : "Fired when the InValue input is received, with the remapped input value as the parameter."
 ]
 
-@PointClass base(Targetname) = math_colorblend :
+@PointClass base(Targetname) iconsprite("editor-ficool2/math_colorblend") = math_colorblend :
 	"Used to create a blend between two colors for controlling the color of another entity."
 [
 	spawnflags(flags) = 
@@ -5543,7 +5552,7 @@
 	input SetLerpPercent(float) : "Sets the lerp percent."
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = logic_lineto : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/logic_lineto") = logic_lineto : 
 	"An entity that calculates and outputs a vector from one entity to another." 
 [
 	source(target_destination) : "Start entity" : : "Name of the entity the line should start from."
@@ -5553,7 +5562,7 @@
 	output Line(vector) : "Fired when the vector, from the start entity to the end entity, changes. Passes along the vector as a parameter."
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = logic_navigation : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/logic_navigation") = logic_navigation : 
 	"An entity that is used to set navigation properties on other entities. Useful to make NPCs ignore physics props in their way that they can easily push." 
 [
 	target(target_destination) : "Navigation Entity" : : "Name of the entity to set navigation properties on."
@@ -5591,7 +5600,7 @@
 	input SetMinHitpointsThreshold(integer) : "Set MinimumHitPoints to this."
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = logic_active_autosave :
+@PointClass base(Targetname) iconsprite("vizzys-icons/logic_active_autosave") = logic_active_autosave :
 	"An entity that is used to look for opportunities to autosave."
 [
 	MinimumHitPoints(integer): "Initiation Hit Points" : 30 : "Start looking for an opportunity to save if player drops below this hitpoint level."
@@ -5631,7 +5640,7 @@
 ]
 
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = point_template : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/point_template") = point_template : 
 	"Turns an entity, or set of entities, into a single template that can be instanced anywhere, and multiple times. "+
 	"If there are interdependencies (entity I/O, hierarchy, or other name references) between the entities "+
 	"in the template, the entities in the template will have their names changed and the interdependencies will "+
@@ -5679,7 +5688,7 @@
 	output OutSpawnedEntity(ehandle) : "Fired for each entity spawned by this template, passing said entity as the parameter and activator."
 ]
 
-@PointClass base(Targetname,Parentname,Angles) = env_entity_maker : 
+@PointClass base(Targetname,Parentname,Angles) iconsprite("editor-ficool2/env_entity_maker") = env_entity_maker : 
 	"Spawns the specified entity template at its origin. If set to auto-spawn, it will spawn the template whenever there's room and the player "+
 	"is looking elsewhere." 
 [
@@ -6008,7 +6017,7 @@
 	output OutVector(vector) : "Outputs the modified vector."
 ]
 
-@PointClass base(Targetname, EnableDisable) size(-8 -8 -8, 8 8 8) = logic_modelinfo :
+@PointClass base(Targetname, EnableDisable) iconsprite("vizzys-icons/logic_modelinfo") = logic_modelinfo :
 	"Gets and outputs some model information from an entity."
 [
 	target(target_destination) : "Target" : "" : "The entity whose model will be evaluated."
@@ -6032,7 +6041,7 @@
 	output OutPoseParameterValue(float) : "Fires when the pose parameter value is requested, outputting its current value."
 ]
 
-@PointClass base(Targetname, EnableDisable) size(-8 -8 -8, 8 8 8) = game_globalvars :
+@PointClass base(Targetname, EnableDisable) iconsprite("vizzys-icons/game_globalvars") = game_globalvars :
 	"Outputs a few global variables when requested."
 [
 	// Inputs
@@ -6238,7 +6247,7 @@
 
 //
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = point_ragdollboogie : 
+@PointClass base(Targetname) iconsprite("vizzys-icons/point_ragdollboogie") = point_ragdollboogie : 
 	"An entity that makes ragdolls dance."
 [
 	spawnflags(flags) =
@@ -6540,7 +6549,7 @@
 	output OnNPCNotUsingHint(integer) : "Fires when a NPC is not using any of the hints. Outputs the hint ID and uses the NPC as the activator. This fires for each hint on each NPC." 
 ]
 
-@PointClass base(Targetname) = point_copy_size : 
+@PointClass base(Targetname) iconsprite("vizzys-icons/point_copy_size") = point_copy_size : 
 	"Copies the size of one entity to another."
 [
 	Source(target_destination) : "Size source" : : "The entity whose size would be measured and copied from."
@@ -6559,7 +6568,7 @@
 	output OnCopy(void) : "Fires each time the size is successfully copied with the target as the activator." 
 ]
 
-@PointClass base(Targetname, EnableDisable) = ai_weaponmodifier : 
+@PointClass base(Targetname, EnableDisable) iconsprite("vizzys-icons/ai_weaponmodifier") = ai_weaponmodifier : 
 	"Modifies a NPC's weapon shot regulation."
 [
 	Target(target_destination) : "Target(s)" : : "The NPC(s) that will be modified by default."
@@ -6584,7 +6593,7 @@
 	input Reset(bool) : "Causes the shot regulator to reset. If 1 is passed, the NPC will immediately start firing instead of waiting for the next burst interval."
 ]
 
-@PointClass base(Targetname) = env_closecaption : 
+@PointClass base(Targetname) iconsprite("vizzys-icons/env_closecaption") = env_closecaption : 
 	"Sends a CC token via the 'Send' input. Unfortunately, this does not allow you to make your own and you can only use existing ones."
 [
 	flags(choices) : "Flags" : 0 : "Flags." =
@@ -6758,7 +6767,7 @@
 		"all entities EXCEPT those whose class name matches the given string will pass the filter."
 ]
 
-@FilterClass base(BaseFilter) iconsprite("editor/filter_class.vmt") = filter_activator_mass_greater :
+@FilterClass base(BaseFilter) iconsprite("vizzys-icons/filter_activator_mass_greater") = filter_activator_mass_greater :
 	"A filter that filters by the mass of the activator."
 [
 	filtermass(float) : "Filter Mass" : : "The mass to filter by. If the filter mode is Allow, only entities whose "+
@@ -6766,7 +6775,7 @@
 		"all entities EXCEPT those whose mass is greater than the given float will pass the filter."
 ]
 
-@FilterClass base(BaseFilter, DamageTypes) = filter_damage_type :
+@FilterClass base(BaseFilter, DamageTypes) iconsprite("vizzys-icons/filter_damage_type") = filter_damage_type :
 	"A damage filter that filters by the type of damage inflicted. This can only be used as a damage filter, not as an activator filter."
 [
 	filtertype(choices) : "Logic Type" : 1 : "Most of these are only relevant if more than one damage type is a factor." =
@@ -6811,7 +6820,7 @@
 	]
 ]
 
-@FilterClass base(BaseFilter) iconsprite("editor/filter_class.vmt") sphere(filter_radius) sphere(filter_outer_radius) = filter_enemy :
+@FilterClass base(BaseFilter) iconsprite("vizzys-icons/filter_enemy") sphere(filter_radius) sphere(filter_outer_radius) = filter_enemy :
 	"A filter that filters a potential enemy entity by a set of criteria."
 [
 	filtername(string) : "Name/Classname" : : "The classname or entity name to filter by. If the filter mode is Allow, only entities whose "+
@@ -6861,7 +6870,7 @@
 	input ClearContext(void) : "Removes all contexts in this filter's list of response contexts."
 ]
 
-@FilterClass base(BaseFilter) iconsprite("editor/filter_generic2.vmt") = filter_activator_squad :
+@FilterClass base(BaseFilter) iconsprite("vizzys-icons/filter_activator_squad") = filter_activator_squad :
 	"A filter that filters by the squad of the activator."
 [
 	filtername(string) : "Filter Squad" : : "The squad name to filter by. If the filter mode is Allow, only entities who are "+
@@ -6875,7 +6884,7 @@
 	]
 ]
 
-@FilterClass base(BaseFilter) iconsprite("editor/filter_generic2.vmt") = filter_activator_hintgroup :
+@FilterClass base(BaseFilter) iconsprite("vizzys-icons/filter_activator_hintgroup") = filter_activator_hintgroup :
 	"A filter that filters by the hintgroup of the activator."
 [
 	filtername(string) : "Filter Hintgroup" : : "The hintgroup to filter by. If the filter mode is Allow, only entities who have "+
@@ -7145,7 +7154,7 @@
 // 
 //-------------------------------------------------------------------------
 
-@PointClass base(Targetname) iconsprite("editor/mapbase_manifest.vmt") color(239 163 14) = mapbase_manifest : "Mounts additional manifest files"
+@PointClass base(Targetname) iconsprite("vizzys-icons/mapbase_manifest.vmt") color(239 163 14) = mapbase_manifest : "Mounts additional manifest files"
 [
 	// Keys
 	target(string) : "Manifest File" : : "The manifest file to load. Keep in mind ''maps/%mapname%_manifest.txt'' is always loaded automatically without this entity."
@@ -7187,7 +7196,7 @@
 //
 //-------------------------------------------------------------------------
 
-@PointClass base(Targetname, Parentname, EnableDisable) = point_anglesensor :
+@PointClass base(Targetname, Parentname, EnableDisable) iconsprite("editor-ficool2/point_anglesensor") = point_anglesensor :
 	"An entity that detects if another entity points in a given direction for a period of time."
 [
 	target(target_destination) : "Target Entity Name" : : "Name of the entity whose angles will be sensed."
@@ -7211,7 +7220,7 @@
 	output FacingPercentage(float) : "Normalized value (0..1) where 1 is facing directly at target and 0 is at or beyond the angle of tolerance."
 ]
 
-@PointClass base(Targetname) = point_angularvelocitysensor :
+@PointClass base(Targetname) iconsprite("editor-ficool2/point_angularvelocitysensor") = point_angularvelocitysensor :
 	"An entity that detects if another entity's angular velocity meets or exceeds a threshold value."
 [
 	target(target_destination) : "Target Entity Name" : : "Name of the entity whose angular velocity will be sensed."
@@ -7242,7 +7251,7 @@
 	output OnEqualTo(void) : "Fired when the Target Entity reaches the threshold angular velocity from a different velocity."
 ]
 
-@PointClass base(Targetname) = point_velocitysensor :
+@PointClass base(Targetname) iconsprite("editor-ficool2/point_velocitysensor") = point_velocitysensor :
 	"An entity that detects and outputs an entity's velocity."
 [
 	target(target_destination) : "Target Entity Name" : : "Name of the entity whose velocity will be sensed."
@@ -7260,7 +7269,7 @@
 	input Disable(void) : "Disable the sensor."
 ]
 
-@PointClass base(Targetname, Parentname, EnableDisable, Angles) = point_proximity_sensor :
+@PointClass base(Targetname, Parentname, EnableDisable, Angles) iconsprite("editor-ficool2/point_proximity_sensor") = point_proximity_sensor :
 	"An entity that detects another entity's proximity to a target position."
 [
 	target(target_destination) : "Target Entity Name" : : "Name of the entity whose angles will be sensed."
@@ -7279,7 +7288,7 @@
 ]
 
 
-@PointClass base(Targetname, Parentname, Angles) = point_teleport : 
+@PointClass base(Targetname, Parentname, Angles) iconsprite("editor-ficool2/point_teleport") = point_teleport : 
 	"An entity that teleports a target entity to this position and angles. "+
 	"If 'Teleport Home' spawn flag is set, teleports the target entity to its spawn position instead." +
 	"If object is physically simulated, simulation is turned off when teleported."
@@ -7297,7 +7306,7 @@
 	input TeleportToCurrentPos(void) : "Teleport to the current position."
 ]
 
-@PointClass base(Targetname, Parentname, DamageTypes) sphere(DamageRadius) = point_hurt :
+@PointClass base(Targetname, Parentname, DamageTypes) iconsprite("editor-ficool2/point_hurt") sphere(DamageRadius) = point_hurt :
 	"An entity that does damage to all entities in a radius around itself, with a specified delay." +
 	"If 'Target Entity' is specified, the damage is only done to that entity."
 [
@@ -7314,7 +7323,7 @@
 	input Toggle(void) : "Toggle this entity between On/Off state."
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) = point_playermoveconstraint : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/point_playermoveconstraint") = point_playermoveconstraint : 
 	"An entity that constrains players to a radius around itself, slowing them down the closer they get to the edge of the radius."
 [
 	radius(float) : "Radius" : 256 : "Radius to constrain players to."
@@ -7421,14 +7430,14 @@
 	output OnBreak(void) : "Fired when the constraint breaks."
 ]
 	
-@PointClass base(Targetname) = phys_constraintsystem : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/phys_constraintsystem") = phys_constraintsystem : 
 	"An entity used to manage a group of interacting constraints and keep them stable. " +
 	"All constraints on a set of entities should be placed in the same system, or they will fight each other during simulation."
 [
 	additionaliterations(integer) : "Additional System Iterations" : 0 : "Adding iterations makes the interactions among constraints in a system tighter.  It will not compensate for errors due to collision, but will help in cases where objects of disparate mass are constrained to each other."
 ]
 
-@PointClass base(Targetname,Angles) = phys_keepupright : "A controller that tries to keep an entity facing a particular direction."
+@PointClass base(Targetname,Angles) iconsprite("editor-ficool2/phys_keepupright") = phys_keepupright : "A controller that tries to keep an entity facing a particular direction."
 [
 	spawnflags(flags) =
 	[
@@ -7474,20 +7483,20 @@
 	output OnAwakened(void) : "Fired when this entity becomes awake (collision/force is applied)."
 ]
 
-@PointClass base(Targetname, Parentname) size(-4 -4 -4, 4 4 4) = info_constraint_anchor : 
+@PointClass base(Targetname, Parentname) iconsprite("editor-ficool2/info_constraint_anchor") = info_constraint_anchor : 
 	"An entity used to attach constraints to a local position on an entity. Usually constraints will attach to the center of mass of an object. "+
 	"Attach the desired constraint to this entity, and then parent this entity to the entity you want the constraint to apply to."
 [
 	massScale(float) : "Amount to scale the mass of this body in the constraint solver" : "1"
 ]
 
-@PointClass size(-4 -4 -4, 4 4 4) = info_mass_center :
+@PointClass iconsprite("editor-ficool2/info_mass_center") = info_mass_center :
 	"An entity that overrides the mass center of the target physics prop, or func_physbox, by moving it to the info_mass_center's location."
 [
 	target(target_destination) : "Target object" : ""  : "The entity whose mass center will be overridden."
 ]
 
-@PointClass halfgridsnap base(Targetname) = phys_spring : 
+@PointClass halfgridsnap base(Targetname) iconsprite("editor-ficool2/phys_spring") = phys_spring : 
 	"A physically simulated spring. "+
 	"'Length' is what's known as the 'natural spring length'. This is how long the spring would "+
 	"be if it was at rest (nothing hanging on it or attached). When you attach something to the "+
@@ -7516,7 +7525,7 @@
 	input SetSpringDamping(float) : "Set the Spring Damping."
 ]
 
-@PointClass halfgridsnap size(-8 -8 -8, 8 8 8) base(TwoObjectPhysics) = phys_hinge : 
+@PointClass halfgridsnap iconsprite("editor-ficool2/phys_hinge") base(TwoObjectPhysics) = phys_hinge : 
 	"A physically simulated hinge. Use the helper to define the axis of rotation."
 [
 	hingefriction(float) : "Friction" : "0" : "Resistance/friction in the hinge"
@@ -7636,7 +7645,7 @@
 	zfriction(float) : "Z axis friction" : "0"
 ]
 
-@PointClass base(Targetname) size(-8 -8 -8, 8 8 8) color(0 0 255) = phys_convert : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/phys_convert") = phys_convert : 
 	"Turns an arbitrary entity into a physically simulated entity. i.e. brush entities will behave like func_physbox, model entities behave like prop_physics."
 [
 	spawnflags(flags) =
@@ -7686,7 +7695,7 @@
 	input Scale(string) : "Set Force Scale"
 ]
 
-@PointClass base(ForceController, Angles) = phys_thruster : 
+@PointClass base(ForceController, Angles) studioprop("models/editor-ficool2/cone_helper_gray.mdl") = phys_thruster : 
 	"An entity used to apply constant acceleration to a physics object. "+
 	"The force and torque is calculated using the position and direction of the thruster as an impulse. So moving those off the object's center "+
 	"will cause torque as well. Torque can be removed by unchecking the 'apply torque' flag. The position of the thruster can be forced to be "+
@@ -7701,7 +7710,7 @@
 	force(string) : "Force" : "0" : "Force (will be integrated, units are force kg*in/s^2)"
 ]
 
-@PointClass halfgridsnap base(ForceController) = phys_torque : 
+@PointClass halfgridsnap base(ForceController) studioprop("models/editor-ficool2/cone_helper_gray.mdl") = phys_torque : 
 	"An angular thruster. Use it to apply angular force to an entity."
 [
 	// Angular acceleration (units are degress/s^2)
@@ -7709,7 +7718,7 @@
 	axis(vecline) : "Rotation Axis" : ""
 ]
 
-@PointClass base(Targetname) halfgridsnap size(-8 -8 -8, 8 8 8) = phys_motor : 
+@PointClass base(Targetname) halfgridsnap iconsprite("editor-ficool2/phys_motor") = phys_motor : 
 	"An entity that tries to spin a target entity at a particular speed."
 [
 	speed(string) : "Rotation Speed" : "0" : "Angular speed (units are degress/second)"
@@ -7818,6 +7827,13 @@
 		0 : "No"
 		1 : "Yes"
 	]
+	generatelightmaps(choices) : "Generate (and use) lightmaps for this static prop" : 0 =
+	[
+		0 : "No"
+		1 : "Yes"
+	]
+	lightmapresolutionx(integer) : "Lightmap Resolution X" : 32 : "The resolution of the generated lightmap in the X (or U) direction (only used if Generate Lightmaps is Yes) "
+	lightmapresolutiony(integer) : "Lightmap Resolution Y" : 32 : "The resolution of the generated lightmap in the Y (or V) direction (only used if Generate Lightmaps is Yes) "
 ]
 
 @BaseClass = BaseFadeProp
@@ -8351,7 +8367,7 @@
 	output OnDeath(void) : "Fires when the target is killed."
 ]
 
-@PointClass sphere(max_range) sphere(LoudPanicRange) sphere(QuietPanicRange) = func_fish_pool : "Creates a school of interactive fish that swim near this entity."
+@PointClass sphere(max_range) sphere(LoudPanicRange) sphere(QuietPanicRange) iconsprite("editor-ficool2/func_fish_pool") = func_fish_pool : "Creates a school of interactive fish that swim near this entity."
 [
 	model(studio) : "World model" : "models/Junkola.mdl"
 	skin(integer) : "Skin" : 0 : "Some models have multiple versions of their textures, called skins. Set this to a number other than 0 to make each fish use that skin instead of the default."
@@ -8574,7 +8590,7 @@
 	movementsound(sound) : "Vehicle Movement Sound" : "vehicles/tank_treads_loop1.wav"
 ]
 
-@PointClass base(Targetname, Parentname, Angles) cylinder(255 255 255, targetname, target, radius, targetname, targetname, radius) color(255 192 0) size(16 16 16) = path_track : 
+@PointClass base(Targetname, Parentname, Angles) cylinder(255 255 255, targetname, target, radius, targetname, targetname, radius) iconsprite("editor-ficool2/path_track") = path_track : 
 	"An entity used to build paths for other entities to follow. Each path_track is a node on the path, each holding the name of the next path_track in the path."
 [
 	spawnflags(Flags) =
@@ -8621,7 +8637,7 @@
 // Test Entities
 //
 //-------------------------------------------------------------------------
-@PointClass base(Angles) size(-16 -16 -16, 16 16 16) color(255 255 255) = test_traceline : 
+@PointClass base(Angles) iconsprite("editor-ficool2/test_traceline") = test_traceline : 
 	"A debugging tool for testing tracelines."
 [
 ]
@@ -8913,7 +8929,7 @@
 //
 //-------------------------------------------------------------------------
 
-@PointClass base(Targetname,ResponseContext,EnableDisable) = ai_speechfilter : 
+@PointClass base(Targetname,ResponseContext,EnableDisable) iconsprite("editor-ficool2/ai_speechfilter") = ai_speechfilter : 
 	"An entity that can be used to control the idle speech patterns of a set of NPCs."
 [
 	subject(target_destination) : "Subject(s)" : "" : "This is the NPC(s) whose speech we're filtering. May be a targetname or a classname."	
@@ -8948,7 +8964,7 @@
 // Used to allow entities to use point_cameras for their materials
 //-------------------------------------------------------------------------
 
-@PointClass base(Targetname) = info_camera_link :
+@PointClass base(Targetname) iconsprite("editor-ficool2/info_camera_link") = info_camera_link :
 	"An entity that can use point_cameras to render images for materials used by entities. "+
 	"To author the material, use the special identifier _rt_Camera " +
 	"for the $baseTexture (or whatever texture you want, like envmap, etc.) in the .vmt " +
@@ -8967,7 +8983,7 @@
 // Used to listen to events called from code
 //-------------------------------------------------------------------------
 
-@PointClass base(Targetname) = logic_eventlistener :
+@PointClass base(Targetname) iconsprite("vizzys-icons/logic_eventlistener") = logic_eventlistener :
 	"An entity that can listen to events fired from code and fire " +
 	"an output when it happens."
 [
@@ -8996,7 +9012,7 @@
 	output OnEventFired(void)  : "Fires when the event has been detected."
 ]
 
-@PointClass base(logic_eventlistener) = point_event :
+@PointClass base(logic_eventlistener) iconsprite("vizzys-icons/point_event") = point_event :
 	"An entity that can listen to events fired from code and fire " +
 	"an output when it happens."
 [
@@ -9046,7 +9062,7 @@
 // Used to allow entities to mimic the motions of other entities
 //-------------------------------------------------------------------------
 
-@PointClass base(Targetname) = logic_measure_movement :
+@PointClass base(Targetname) iconsprite("editor-ficool2/logic_measure_movement") = logic_measure_movement :
 	"An entity that can measure the movement of an entity relative to another entity " +
 	"and apply that movement to a third entity."
 [
@@ -9101,7 +9117,7 @@
 	output OutAngles(vector)  : "Outputs the resulting angles when allowed."
 ]
 
-@PointClass base(logic_measure_movement) = logic_mirror_movement :
+@PointClass base(logic_measure_movement) iconsprite("vizzys-icons/logic_mirror_movement") = logic_mirror_movement :
 	"An entity that can measure the direction of an entity relative to another entity " +
 	"and apply the position the entity is looking at to a third entity."
 [
@@ -9111,7 +9127,7 @@
 	TargetReference(target_destination) : "Movement Reference" : "" : "The Entity to Move will be mirrored relative to this entity. (Mirror target)"
 ]
 
-@PointClass base(logic_measure_movement, Angles) sphere(TraceDistance) = logic_measure_direction :
+@PointClass base(logic_measure_movement, Angles) sphere(TraceDistance) iconsprite("vizzys-icons/logic_measure_direction") = logic_measure_direction :
 	"An entity that can measure the direction of an entity relative to another entity " +
 	"and apply the position the entity is looking at to a third entity."
 [
@@ -9199,7 +9215,7 @@
 	output OnCreditsDone(void)  : "Fired when the credits having finished rolling."
 ]
 
-@PointClass base(Parentname, Targetname) size(-8 -8 -8, 8 8 8 ) = material_modify_control : 
+@PointClass base(Parentname, Targetname) iconsprite("editor-ficool2/material_modify_control") = material_modify_control : 
 	"An entity that can be used to directly control material vars. To use it, you need to read the .vmt of the material you "+
 	"intend to change. Parent this entity to a brush model entity who's material you want to control."
 [
@@ -9337,7 +9353,7 @@
 	output OutPlayerEntity(ehandle) : "Outputs a player's entity."
 ]
 
-@PointClass base(Targetname, Parentname) size(-8 -8 -8, 8 8 8 ) = env_spritetrail : 
+@PointClass base(Targetname, Parentname) iconsprite("vizzys-icons/env_spritetrail") = env_spritetrail : 
 	"A magical trail you can parent to anything you heart desires."
 [
 	lifetime(float) : "Lifetime" : "0.5"
@@ -9567,7 +9583,7 @@
 	input SetScale(float) : "Sets the view scale."
 ]
 
-@PointClass base(Targetname) = env_particle_performance_monitor : 
+@PointClass base(Targetname) iconsprite("editor-ficool2/env_particle_performance_monitor") = env_particle_performance_monitor : 
 	"An entity for turning on and off measuring and display of particle throughput."
 [
 	// Inputs
@@ -9585,7 +9601,7 @@
 	input SetAnimationTarget(target_destination) : "Set the animation target to use. An empty string will disable the puppet."
 ]
 
-@PointClass base(Origin, Targetname, EnableDisable) size(-2 -2 -2, 2 2 2) color(0 255 0) = point_gamestats_counter : "Generic game statistics counter."
+@PointClass base(Origin, Targetname, EnableDisable) iconsprite("editor-ficool2/point_gamestats_counter") = point_gamestats_counter : "Generic game statistics counter."
 [
 	Name(string) 		: "Name of statistic counter"
 
@@ -9593,7 +9609,7 @@
 	input Increment(float) : "Increments named statistic counter by specified value"
 ]
 
-@PointClass base(Angles) size( -8 -8 -8, 8 8 8 ) instance() = func_instance : 
+@PointClass base(Angles) iconsprite("vizzys-icons/func_instance") instance() = func_instance : 
 	"An entity for placing an instance of a map file.  You may translate and rotate this entity. " +
 	"You can use the replace keys to do parameter changes on the instance contents.  In a $ at the " +
 	"beginning of a variable name.  Then just use the $variable name inside of the instance contents on any "+
@@ -9810,12 +9826,12 @@
 	input SetCaption(string) : "Sets the hint's caption. Does not update hints in progress."
 ]
 
-@PointClass base(Targetname,Parentname) = info_target_instructor_hint : "A generic target that gets replicated to the client for hud hint targeting"
+@PointClass base(Targetname,Parentname) iconsprite("vizzys-icons/info_target_instructor_hint") = info_target_instructor_hint : "A generic target that gets replicated to the client for hud hint targeting"
 [
 
 ]
 
-@PointClass base(Targetname,EnableDisable) = point_glow : "Mapbase off-shoot of tf_glow"
+@PointClass base(Targetname,EnableDisable) iconsprite("vizzys-icons/point_glow") = point_glow : "Mapbase off-shoot of tf_glow"
 [
 	target(target_destination) : "Target" : : "One target only."
 	GlowColor(color255) : "Glow Color" : "255 0 0 255" : "<r> <g> <b> <a> 0-255"
