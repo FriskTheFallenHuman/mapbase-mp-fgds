@@ -65,6 +65,17 @@
 
 //-------------------------------------------------------------------------
 //
+// Props
+//
+//-------------------------------------------------------------------------
+@PointClass base(prop_physics) studioprop() sphere(fademindist) sphere(fademaxdist) = prop_physics_respawnable :
+	"This class is the same as prop_physics, except it respawns after it breaks"
+[
+	RespawnTime(float) : "Respawn Time" : 60 : "Ammount in seconds this prop will respawn after it breaks."
+]
+
+//-------------------------------------------------------------------------
+//
 // NPCs
 //
 //-------------------------------------------------------------------------
