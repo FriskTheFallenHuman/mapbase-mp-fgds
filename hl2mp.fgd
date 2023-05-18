@@ -1,0 +1,106 @@
+//====== Copyright � 1996-2005, Valve Corporation, All rights reserved. =======
+//
+// Purpose: Half-Life 2 DM game definition file (.fgd)
+//
+// This is the Mapbase version of the PinSplash DM FGD.
+// Much of this content only works in Mapbase.
+//
+//=============================================================================
+@include "halflife2.fgd"
+
+//-------------------------------------------------------------------------
+//
+// Activator Filters
+//
+//-------------------------------------------------------------------------
+
+@FilterClass base(BaseFilter) iconsprite("editor/filter_team") color(248 155 0) = filter_activator_team :
+	"Filter that checks which team a player is on."
+[
+	filterteam(choices) : "Filter Team Number" : 0 : "The team number to filter by." =
+	[
+		0 : "Any"
+		2 : "Combine"
+		3 : "Rebels"
+	]
+]
+
+//-------------------------------------------------------------------------
+//
+// Brushes
+//
+//-------------------------------------------------------------------------
+
+@SolidClass base(BreakableBrush,Targetname, Origin, RenderFields, Shadow) color(255 0 255) = func_physbox_multiplayer :
+	"A version of func_physbox that works better when in multiplayer maps." +
+	"It has optimizations which make it easier to network than func_physbox, though it can appear to move differently."
+[
+]
+
+//@SolidClass base(CBaseEntity) = func_proprrespawnzone :
+//	"Clientside physics props that are placed in this brush in Hammer will automatically respawn in their original place if they get destroyed or moved." +
+//	"The props won't respawn if a player could see it happen or if they're too close."
+//[
+//]
+
+//-------------------------------------------------------------------------
+//
+// Info Entities
+//
+//-------------------------------------------------------------------------
+
+@PointClass base(PlayerClass, Angles) studio("models/editor/playerstart.mdl") color(0 255 0) = info_player_combine :
+	"When mp_teamplay 1, Combine players spawn here."
+[
+]
+@PointClass base(PlayerClass, Angles) studio("models/editor/playerstart.mdl") color(0 255 0) = info_player_deathmatch :
+	"It's a spot that a player can spawn at in teamless (FFA) deathmatch." +
+	"It is also used when mp_teamplay 1 if no info_player_combines or info_player_rebels are found."
+[
+]
+@PointClass base(PlayerClass, Angles) studio("models/editor/playerstart.mdl") color(0 255 0) = info_player_rebel :
+	"When mp_teamplay 1, Rebel players spawn here."
+[
+]
+
+//-------------------------------------------------------------------------
+//
+// NPCs
+//
+//-------------------------------------------------------------------------
+
+@PointClass base(Targetname, Parentname, Angles, RenderFields, DamageFilter) studio("models/Weapons/w_slam.mdl") color(160 37 240) = npc_satchel :
+	"A SLAM that's been thrown." +
+	"Since it isn't controlled by a player, can't be set off unless shot or sent its Explode input."
+[
+	input Explode(void) : "Makes the SLAM explode. Note: There is usually a 0.2 second delay on SLAM explosions."
+]
+
+@PointClass base(Targetname, Parentname, Angles, RenderFields, DamageFilter) studio( "models/weapons/w_slam.mdl" ) sphere(DmgRadius) = npc_tripmine :
+	"Planted SLAM." +
+	"Pitch Yaw Roll does not match the direction the beam will go." +
+	"It will go in the direction that the front side of the model faces."
+[
+	PowerUpTime(float) : "Power Up Time" : "2.0" : "How much time this tripmine takes to power up after being activated."
+	Damage(float) : "Damage" : "150" : "The amount of damage this tripmine can deal."
+	DmgRadius(float) : "Damage Radius" : "200" : "The radius in which this tripmine can damage."
+
+	spawnflags(flags) =
+	[
+		1  : "[1] Start inactive" : 0
+	]
+
+	// Inputs
+	input Activate(void) : "Recharge to full"
+
+	// Outputs
+	output OnExplode(void) : "Fires when this tripmine explodes."
+]
+
+//-------------------------------------------------------------------------
+//
+// Weapons
+//
+//-------------------------------------------------------------------------
+
+@PointClass base(Weapon) studio("models/weapons/w_slam.mdl") sphere(fademindist) sphere(fademaxdist) = weapon_slam: "Selectable Lightweight Attack Munition." []
