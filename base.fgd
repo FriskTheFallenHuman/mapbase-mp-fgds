@@ -5806,6 +5806,12 @@
 
 	landmark(target_destination) : "Local Destination Landmark" : : "If specified, then sounds offset from the speaker by their initial offset from this landmark. Only applicable in Speaker mode."
 
+    reorient_landmark(choices) : "Reorient Landmark" : 0 : "Reorient angles and velocity in case the destination is rotated" =
+    [
+        0 : "No"
+        1 : "Yes"
+    ]
+
 	PitchScale(float) : "Pitch Scale" : "1.0" : "Scales the pitch of transmitted sounds. Only applicable in Speaker mode."
 	VolumeScale(float) : "Volume Scale" : "1.0" : "Scales the volume of transmitted sounds. Only applicable in Speaker mode."
 
