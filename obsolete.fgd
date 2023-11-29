@@ -150,6 +150,7 @@
 [
 	DisappearDist(integer)    : "Disappear Distance" : 2000 : "Distance at which these brushes should start to fade out."
 	DisappearMaxDist(integer)    : "Maximum Disappear Distance" : 0 : "If specified, this would be distance at which these brushes should fade out completely. If 0, it will combine the regular disappear distance with the value stored in the 'lod_TransitionDist' convar, which is 800 by default."
+	InvertAlpha(bool) : "Inverts the calculated visibility."
 	Solid(choices) : "Solid" : 0 : "Set whether or not these brushes should collide with other entities." =
 	[
 		0: "Solid"
