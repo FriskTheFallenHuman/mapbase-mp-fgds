@@ -8905,6 +8905,8 @@
 		128 : "[128] Rideable Train (HL1 Train)" : 0
 		256 : "[256] Use max speed for pitch shifting move sound" : 0
 		512 : "[512] Is unblockable by player" : 0
+		1024 : "[1024] Improved orientation smooth" : 0
+		2048 : "[2048] Bounce back on hitting wall" : 0
 	]
 
 	target(target_destination) : "First Stop Target" : "" : "The name of the first path_track in the train's path. The train " +
@@ -8994,6 +8996,11 @@
 	input SetSpeedDirAccel(float) : "Accel/Decel to the specified speed, as a ratio of max speed. Negative values reverse the direction [-1, 1]"
 	input TeleportToPathTrack(target_destination) : "Teleport train to the designated path track."
 	input SetSpeedForwardModifier(float) : "Applies the given modifier to all forward speeds. [0, 1]"
+	input ApplyBrakes(float) : "Apply the brakes of the train. Given float is time to stop."
+	input DisableControls(void) : "Disable control of the train."
+	input EnableControls(void) : "Enable control of the train."
+	input SetManualAccelSpeed(float) : "Set the speed the train accelerates at."
+	input SetManualDecelSpeed(float) : "Set the speed the train accelerates at."
 ]
 
 @SolidClass base(Parentname,Global) = func_traincontrols :
